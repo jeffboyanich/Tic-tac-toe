@@ -1,0 +1,17 @@
+#gameboard {
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    width: 50vw;
+    height: 50vw;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.board-space {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+    align-items: center;
+}
