@@ -5,13 +5,54 @@
     grid-template-rows: auto;
     width: 50vw;
     height: 50vw;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+
 }
 
 .board-space {
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
     text-align: center;
     align-items: center;
+}
+
+#overlay {
+    position: fixed; 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+  }
+
+.popup-content {
+    text-align: center;
+    width: 10vw;
+    height: 5vw;
+    margin: 20vw auto;
+    vertical-align: middle;
+    background: white;
+}
+
+.bottom-right {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.bottom {
+    border-bottom: 1px solid black;
+}
+
+.bottom-left {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.right {
+    border-right: 1px solid black;
+}
+
+.left {
+    border-left: 1px solid black;
 }
