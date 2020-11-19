@@ -16,7 +16,7 @@ const displayBoard = (() => {
             boardSpace.classList.add('right');
         }else if (index == 8) {
             boardSpace.classList.add('left');
-        }
+        } 
     };
     const boardSpaces = document.querySelectorAll('.board-space');
     const boardArr = [];
@@ -51,10 +51,24 @@ const displayBoard = (() => {
         popupContent.append(continueBtn);
         gameOverPopup.style.display = 'block';
     }
-    return {boardArr, resetDisplay, gameOverDisplay};
+    const startGamePopup = document.getElementById('start-overlay');
+    const playerNameForm = document.getElementById('start-content');
+    const playBtn = document.getElementById('play-button');
+    let p1name = '';
+    let p2name = '';
+    const getPlayerNames = () => {
+        p1name = playerNameForm.p1name.value;
+        p2name = playerNameForm.p2name.value;
+    }
+    playBtn.addEventListener('click', function() {
+        startGamePopup.style.display = 'none';
+        getPlayerNames();
+        playGame();
+    })
+    return {boardArr, resetDisplay, gameOverDisplay, p1name, p2name};
 })();
 
-const createPlayers = (name, marker, turn, value) => {
+const createPlayers = (name, marker, turn, value, markerColor) => {
     const changeTurn = function() {
         if (turn == true) {
             turn = false;
@@ -65,15 +79,18 @@ const createPlayers = (name, marker, turn, value) => {
     const mark = function(e) {
         if (turn == true) {
             e.target.textContent = marker;
+            e.target.style.color = markerColor;
             displayBoard.boardArr[e.target.dataset.index] = value;
         }
     }
     return {name, mark, changeTurn, value}
 };
 
-const playGame = (() => {
-    const player1 = createPlayers('Player 1', 'X', true, 1);
-    const player2 = createPlayers('Player 2', 'O', false, 2);
+const playGame = () => {
+    const player1 = createPlayers(`${displayBoard.p1name}`, 'X', true, 1, 'red');
+    const player2 = createPlayers(displayBoard.p2name, 'O', false, 2, 'blue');
+    console.log(player1.name);
+    console.log(player2.name);
     const boardSpaces = document.querySelectorAll('.board-space');
         boardSpaces.forEach(function(item) {
             item.addEventListener('click', function(e) {
@@ -181,5 +198,5 @@ const playGame = (() => {
         winner = '';
     }
     return {reset}
-})();
+};
 
