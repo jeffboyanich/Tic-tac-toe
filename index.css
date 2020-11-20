@@ -86,35 +86,59 @@
 
 #start-content {
     margin: 15vw auto;
-    width: 25vw;
+    width: 35vw;
     height: 20vw;
     border-radius: 5px;
     background: rgb(255, 224, 102, 0.9);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    grid-template-areas: 
-    "p1label    p2label"
-    "p1name     p2name"
-    "play         ...";
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.p1-label {
-    grid-area: 'p1label';
+.p1-form {
+    text-align: center;
+    width: 17.5vw;
+    height: 15vw;
+    order: 1;
 }
 
-.p1-name {
-    grid-area: 'p1name';
+.p1-form > label {
+    display: block;
+    margin-top: 20px;
 }
 
-.p2-label {
-    grid-area: 'p2label';
+.p1-form > input {
+    display: inline;
+    margin-top: 20px;
+    width: 150px;
 }
 
-.p2-name {
-    grid-area: 'p2name'
+.p2-form {
+    text-align: center;
+    width: 17.5vw;
+    height: 15vw;
+    order: 2;
 }
 
-.play-button-cell {
-    grid-area: 'play';
+.p2-form > label {
+    display: block;
+    margin-top: 20px;
+}
+
+.p2-form > input {
+    display: inline;
+    margin-top: 20px;
+    width: 150px;
+}
+
+.play {
+    display: inline;
+    height: 50px;
+    order: 3;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.play > button {
+    height: 50px;
 }

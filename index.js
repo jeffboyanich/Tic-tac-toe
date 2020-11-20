@@ -54,16 +54,16 @@ const displayBoard = (() => {
     const startGamePopup = document.getElementById('start-overlay');
     const playerNameForm = document.getElementById('start-content');
     const playBtn = document.getElementById('play-button');
-    let p1name = '';
-    let p2name = '';
-    const getPlayerNames = () => {
+    /*let p1name = playerNameForm.p1name.value;
+    let p2name = playerNameForm.p2name.value; */
+    function startGame() {
         p1name = playerNameForm.p1name.value;
         p2name = playerNameForm.p2name.value;
+        playGame(p1name, p2name);
     }
     playBtn.addEventListener('click', function() {
         startGamePopup.style.display = 'none';
-        getPlayerNames();
-        playGame();
+        startGame();
     })
     return {boardArr, resetDisplay, gameOverDisplay, p1name, p2name};
 })();
@@ -86,9 +86,9 @@ const createPlayers = (name, marker, turn, value, markerColor) => {
     return {name, mark, changeTurn, value}
 };
 
-const playGame = () => {
-    const player1 = createPlayers(`${displayBoard.p1name}`, 'X', true, 1, 'red');
-    const player2 = createPlayers(displayBoard.p2name, 'O', false, 2, 'blue');
+const playGame = (p1name, p2name) => {
+    const player1 = createPlayers(p1name, 'X', true, 1, 'red');
+    const player2 = createPlayers(p2name, 'O', false, 2, 'blue');
     console.log(player1.name);
     console.log(player2.name);
     const boardSpaces = document.querySelectorAll('.board-space');
