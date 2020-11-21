@@ -37,10 +37,14 @@ const displayBoard = (() => {
     const gameOverPopup = document.getElementById('overlay');
     function gameOverDisplay(winner) {
         let popupContent = document.createElement('div');
-        popupContent.classList.add('popup-content');
         let winnerText = document.createElement('div');
-        winnerText.textContent = `${winner}` + ' won!';
         let anotherRoundText = document.createElement('div');
+        if (winner === null) {
+            winnerText.textContent = "It's a draw!";
+        }else {
+            winnerText.textContent = `${winner}` + ' won!';
+        }
+        popupContent.classList.add('popup-content');
         anotherRoundText.textContent = 'Play another round?'
         gameOverPopup.appendChild(popupContent);
         popupContent.appendChild(winnerText);
@@ -59,6 +63,7 @@ const displayBoard = (() => {
             resetBoardArr();
             displayNames('','');
             displayScore('', '');
+            updateTurnDisplay(false, false);
             startGamePopup.style.display = 'block';
         })
         popupContent.append(continueBtn);
@@ -129,6 +134,9 @@ const displayBoard = (() => {
         }else if (p2Turn == true) {
             p2TurnDisplay.textContent = "It's your turn";
             p1TurnDisplay.textContent = '';
+        }else {
+            p1TurnDisplay.textContent = '';
+            p2TurnDisplay.textContent = '';
         }
     }
     return {boardArr, resetDisplay, gameOverDisplay, p1name, p2name, displayScore, p1Color, updateTurnDisplay};
@@ -268,11 +276,12 @@ const playGame = (p1name, p2name) => {
     
     const checkDraw = () => {
         let draw = displayBoard.boardArr.every(function(item) {
-            item === Number;
+            return typeof(item) === 'number';
         });
         if (draw === true) {
-            winner === null;
+            winner = null;
             console.log('draw');
+            displayBoard.gameOverDisplay(winner);
         }
     };
     function checkWin() {
