@@ -6,6 +6,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
     </style> 
 </head>
 <body>
@@ -15,18 +16,55 @@
             <form id = 'start-content'>
                 <div class = 'p1-form'>
                   <label for = 'p1name'>Player 1</label>
-                  <input type = 'text' id = 'p1name' name = 'p1name'>
+                  <input type = 'text' id = 'p1name' name = 'p1name' placeholder="Name">
+                  <div id = 'p1-color'>
+                    <div class = 'p1-color-select' data-color = 'blue'></div>
+                    <div class = 'p1-color-select' data-color = 'red'></div>
+                    <div class = 'p1-color-select' data-color = 'purple'></div>
+                    <div class = 'p1-color-select' data-color = 'yellow'></div>
+                    <div class = 'p1-color-select' data-color = 'pink'></div>
+                    <div class = 'p1-color-select' data-color = 'green'></div>
+                    <div class = 'p1-color-select' data-color = 'orange'></div>
+                    <div class = 'p1-color-select' data-color = 'aqua'></div>
+                    <div class = 'p1-color-select' data-color = 'indigo'></div>
+                  </div>
                 </div>
                 <div class = p2-form>
                   <label for = 'p2name'>Player 2</label>
-                  <input type = 'text' id = 'p2name' name = 'p2name'>
+                  <input type = 'text' id = 'p2name' name = 'p2name' placeholder="Name">
+                  <div id = 'p2-color'>
+                    <div class = 'p2-color-select' data-color = 'blue'></div>
+                    <div class = 'p2-color-select' data-color = 'red'></div>
+                    <div class = 'p2-color-select' data-color = 'purple'></div>
+                    <div class = 'p2-color-select' data-color = 'yellow'></div>
+                    <div class = 'p2-color-select' data-color = 'pink'></div>
+                    <div class = 'p2-color-select' data-color = 'green'></div>
+                    <div class = 'p2-color-select' data-color = 'orange'></div>
+                    <div class = 'p2-color-select' data-color = 'aqua'></div>
+                    <div class = 'p2-color-select' data-color = 'indigo'></div>
+                  </div>
                 </div>
                 <div class = 'play'>
                   <button type = 'button' id = 'play-button'>Play</button>
                 </div>
             </form>
         </div>
-         <div id = 'gameboard'>    
+        <div id = 'container'>
+            <div id = 'p1-display'>
+                <h2 class = 'p1-display-name'></h2>
+                <br>
+                <h3 class = 'p1-display-score'></h3>
+                <div id = 'p1-turn'></div>
+            </div>
+            <div id = 'gameboard'>    
+            </div>
+            <div id = 'p2-display'>
+                <h2 class = 'p2-display-name'></h2>
+                <br>
+                <h3 class = 'p2-display-score'></h3>
+                <br>
+                <div id = 'p2-turn'></div>
+            </div>
         </div>
         <div id = 'overlay'></div>
     </div>

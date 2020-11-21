@@ -7,6 +7,7 @@
     min-height: 35vw;
     max-width: 35vw;
     max-height: 35vw;
+    grid-area: board;
 }
 
 .board-space {
@@ -35,11 +36,17 @@
 
 .popup-content {
     text-align: center;
-    width: 10vw;
-    height: 5vw;
+    width: 15vw;
+    height: 10vw;
     margin: 20vw auto;
     vertical-align: middle;
     background: white;
+    padding-top: 20px;
+    border-radius: 5px;
+}
+
+.popup-content > div {
+    font-family: 'Source Code Pro', monospace;
 }
 
 .bottom-right {
@@ -85,9 +92,9 @@
 }
 
 #start-content {
-    margin: 15vw auto;
+    margin: 10vw auto;
     width: 35vw;
-    height: 20vw;
+    height: 25vw;
     border-radius: 5px;
     background: rgb(255, 224, 102, 0.9);
     display: flex;
@@ -104,12 +111,19 @@
 .p1-form > label {
     display: block;
     margin-top: 20px;
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.5rem;
 }
 
 .p1-form > input {
     display: inline;
-    margin-top: 20px;
-    width: 150px;
+    margin-top: 10px;
+    width: 200px;
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+    height: 2.5vw;
+    font-size: 1.5vw;
 }
 
 .p2-form {
@@ -117,17 +131,25 @@
     width: 17.5vw;
     height: 15vw;
     order: 2;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.5rem;
 }
 
 .p2-form > label {
     display: block;
     margin-top: 20px;
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .p2-form > input {
     display: inline;
-    margin-top: 20px;
-    width: 150px;
+    margin-top: 10px;
+    width: 200px;
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+    height: 2.5vw;
+    font-size: 1.5vw;
 }
 
 .play {
@@ -141,4 +163,91 @@
 
 .play > button {
     height: 50px;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 30vw 35vw 30vw;
+    grid-template-areas: 
+    "p1d   board   p2d";
+    margin: auto;
+    justify-content: center;
+    grid-gap: 10px;
+}
+
+#p1-display {
+    grid-area: p1d;
+    margin-top: 5vw;
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+}
+
+#p2-display {
+    grid-area: p2d;
+    margin-top: 5vw;
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#p1-color, #p2-color {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 10vw;
+    height: 10vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    grid-gap: 10px;
+    box-sizing: content-box;
+}
+
+[data-color = 'blue'] {
+    background: blue;
+    border-radius: 50%;
+    box-sizing: content-box;
+}
+
+[data-color = 'red'] {
+    background: red;
+    border-radius: 50%;
+}
+
+[data-color = 'purple'] {
+    background: purple;
+    border-radius: 50%;
+}
+
+[data-color = 'yellow'] {
+    background: yellow;
+    border-radius: 50%;
+}
+
+[data-color = 'pink'] {
+    background: pink;
+    border-radius: 50%;
+}
+
+[data-color = 'green'] {
+    background: green;
+    border-radius: 50%;
+}
+
+[data-color = 'orange'] {
+    background: orange;
+    border-radius: 50%;
+}
+
+[data-color = 'aqua'] {
+    background: aqua;
+    border-radius: 50%;
+}
+
+[data-color = 'indigo'] {
+    background: indigo;
+    border-radius: 50%;
 }
