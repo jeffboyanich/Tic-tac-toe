@@ -64,7 +64,10 @@ const displayBoard = (() => {
             displayNames('','');
             displayScore('', '');
             updateTurnDisplay(false, false);
+            colorReset();
+            console.log(p1Color);
             startGamePopup.style.display = 'block';
+            //location.reload();
         })
         popupContent.append(continueBtn);
         popupContent.appendChild(stopButton);
@@ -79,15 +82,15 @@ const displayBoard = (() => {
         p1Display.textContent = p1name;
         p2Display.textContent = p2name;
     }
-    function startGame() {
+    function startGame(color1, color2) {
         p1name = playerNameForm.p1name.value;
         p2name = playerNameForm.p2name.value;
-        playGame(p1name, p2name);
+        playGame(p1name, color1, p2name, color2);
         displayNames(p1name, p2name);
     }
     playBtn.addEventListener('click', function() {
         startGamePopup.style.display = 'none';
-        startGame();
+        startGame(p1Color, p2Color);
         playerNameForm.reset();
         displayScore(0, 0);
         updateTurnDisplay(true, false);
@@ -99,11 +102,12 @@ const displayBoard = (() => {
         p2ScoreDisplay.textContent = p2Score;
     };
     const p1ColorDisplay = document.querySelectorAll('.p1-color-select');
-    p1Color = '';
-    p2Color = '';
+    let p1Color = '';
+    let p2Color = '';
     p1ColorDisplay.forEach(function(item) {
         item.addEventListener('click', function(e) {
             p1Color = e.target.dataset.color;
+            console.log(p1Color);
             e.target.style.border = '3px solid black';
             p1ColorDisplay.forEach(function(item) {
                 if (item != e.target) {
@@ -124,6 +128,10 @@ const displayBoard = (() => {
             })
         })
     });
+    const colorReset = () => {
+        p1Color = '';
+        p2Color = '';
+    }
 
     const updateTurnDisplay = (p1Turn, p2Turn) => {
         const p1TurnDisplay = document.getElementById('p1-turn');
@@ -164,9 +172,9 @@ const createPlayers = (name, marker, turn, value, markerColor) => {
     return {name, mark, changeTurn, value, addScore, score, turn}
 };
 
-const playGame = (p1name, p2name) => {
-    const player1 = createPlayers(p1name, 'X', true, 1, p1Color);
-    const player2 = createPlayers(p2name, 'O', false, 2, p2Color);
+const playGame = (p1name, color1, p2name, color2) => {
+    const player1 = createPlayers(p1name, 'X', true, 1, color1);
+    const player2 = createPlayers(p2name, 'O', false, 2, color2);
 
     const boardSpaces = document.querySelectorAll('.board-space');
         boardSpaces.forEach(function(item) {
